@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>EverLeaf Landscaping — Irrigation & Exterior Cleaning in Oregon</title>
+<meta name="description" content="Expert irrigation repair, sprinkler installation, pressure washing, and soft washing throughout the Willamette Valley. Based in Woodburn, Oregon."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --g900:#0f2318;--g800:#1a3a28;--g700:#1e4d32;--g600:#2d6a4f;
+  --g500:#40916c;--g400:#52b788;--g300:#74c69d;--g100:#d8f3dc;--g50:#f0faf2;
+  --sand:#f5f0e8;--sand-d:#e8e0d0;
+  --charcoal:#1c2b22;--text:#2a3a2e;--muted:#5a6e60;--white:#fff;
+  --nav:72px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--white);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased}
+.page{display:none}.page.active{display:block}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav);background:rgba(15,35,24,0.97);backdrop-filter:blur(8px);display:flex;align-items:center;padding:0 5%;border-bottom:1px solid rgba(255,255,255,0.06)}
+.nav-inner{width:100%;max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;color:var(--white);text-decoration:none;cursor:pointer}
+.nav-logo span{color:var(--g400)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.875rem;font-weight:400;letter-spacing:0.04em;text-transform:uppercase;transition:color 0.2s;cursor:pointer}
+.nav-links a:hover,.nav-links a.active{color:var(--g300)}
+.nav-cta{background:var(--g500);color:var(--white)!important;padding:0.5rem 1.2rem;border-radius:4px;font-weight:500!important;text-transform:none!important;letter-spacing:0!important;font-size:0.875rem!important;transition:background 0.2s!important}
+.nav-cta:hover{background:var(--g400)!important}
+.mob-toggle{display:none;background:none;border:none;cursor:pointer;color:var(--white);font-size:1.5rem;line-height:1}
+
+/* BUTTONS */
+.btn{display:inline-block;padding:0.8rem 2rem;border-radius:4px;font-family:'DM Sans',sans-serif;font-size:0.95rem;font-weight:500;cursor:pointer;border:none;transition:all 0.2s;text-decoration:none}
+.btn-primary{background:var(--g500);color:var(--white)}.btn-primary:hover{background:var(--g400)}
+.btn-outline{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,0.45)}.btn-outline:hover{border-color:var(--white);background:rgba(255,255,255,0.08)}
+.btn-outline-dark{background:transparent;color:var(--g600);border:1.5px solid var(--g500)}.btn-outline-dark:hover{background:var(--g50)}
+
+/* SHARED */
+section{padding:5rem 5%}
+.inner{max-width:1200px;margin:0 auto}
+.label{font-size:0.72rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--g500);margin-bottom:0.65rem}
+.h-title{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4vw,2.8rem);font-weight:700;color:var(--charcoal);line-height:1.2}
+.h-sub{font-size:1rem;color:var(--muted);max-width:540px;margin-top:0.9rem;line-height:1.8}
+
+/* PAGE HERO */
+.pg-hero{padding:calc(var(--nav) + 4rem) 5% 4rem;background:var(--g900)}
+.pg-hero .label{color:var(--g300)}
+.pg-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,3.4rem);color:var(--white);line-height:1.15;margin-bottom:1rem}
+.pg-hero p{color:rgba(255,255,255,0.6);font-size:1.05rem;max-width:520px}
+
+/* FOOTER */
+footer{background:var(--g900);color:rgba(255,255,255,0.6);padding:3.5rem 5% 2rem}
+.ft-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,0.07)}
+.ft-brand{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--white);margin-bottom:0.65rem}
+.ft-brand span{color:var(--g400)}
+.ft-desc{font-size:0.88rem;line-height:1.7;max-width:280px}
+.ft-h{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--white);font-weight:500;margin-bottom:0.9rem}
+.ft-links{list-style:none}
+.ft-links li{margin-bottom:0.45rem}
+.ft-links a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.88rem;cursor:pointer;transition:color 0.2s}
+.ft-links a:hover{color:var(--g300)}
+.ft-bot{max-width:1200px;margin:1.5rem auto 0;display:flex;justify-content:space-between;font-size:0.78rem}
+
+/* ══════════ HOME ══════════ */
+.hero{min-height:100vh;background:var(--g900);display:flex;align-items:center;padding:0 5%;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 75% 50%,rgba(64,145,108,0.18) 0%,transparent 65%),radial-gradient(ellipse 40% 50% at 20% 80%,rgba(29,158,117,0.1) 0%,transparent 60%);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;max-width:1200px;margin:0 auto;width:100%;padding-top:var(--nav)}
+.hero-tag{display:inline-flex;align-items:center;background:rgba(64,145,108,0.18);border:1px solid rgba(64,145,108,0.3);color:var(--g300);font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding:0.32rem 0.85rem;border-radius:2px;margin-bottom:1.4rem}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.6rem,5.5vw,3.9rem);font-weight:700;color:var(--white);line-height:1.1;margin-bottom:1.4rem}
+.hero h1 em{font-style:normal;color:var(--g300)}
+.hero-sub{font-size:1.02rem;color:rgba(255,255,255,0.6);line-height:1.8;max-width:430px;margin-bottom:2.25rem}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.hero-stats{display:flex;gap:2.5rem;margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.1)}
+.h-stat-n{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:var(--white);line-height:1}
+.h-stat-l{font-size:0.75rem;color:rgba(255,255,255,0.42);margin-top:0.25rem;text-transform:uppercase;letter-spacing:0.08em}
+
+/* hero visual card */
+.hcard{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:1.5rem}
+.hcard-svc-list{list-style:none}
+.hcard-svc-list li{display:flex;align-items:center;gap:0.75rem;padding:0.6rem 0;border-bottom:1px solid rgba(255,255,255,0.07);font-size:0.88rem;color:rgba(255,255,255,0.72)}
+.hcard-svc-list li:last-child{border-bottom:none}
+.hcard-dot{width:7px;height:7px;border-radius:50%;background:var(--g400);flex-shrink:0}
+.hcard-float{margin-top:1rem;background:var(--g700);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:1rem 1.25rem;display:flex;align-items:center;gap:0.75rem}
+.hcard-float-icon{width:38px;height:38px;background:var(--g500);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.hcard-float strong{display:block;font-size:0.88rem;color:var(--white);font-weight:500}
+.hcard-float span{font-size:0.73rem;color:rgba(255,255,255,0.48)}
+
+/* featured services — 2-col deep cards */
+.featured-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2.75rem}
+.feat-card{border-radius:10px;padding:2.25rem;border:1px solid var(--sand-d);transition:all 0.22s;cursor:pointer}
+.feat-card:hover{transform:translateY(-3px);box-shadow:0 10px 36px rgba(29,158,117,0.1);border-color:var(--g400)}
+.feat-card.dark{background:var(--g900);border-color:rgba(255,255,255,0.08)}
+.feat-card.dark:hover{border-color:var(--g400)}
+.feat-icon{font-size:2rem;margin-bottom:1.1rem}
+.feat-card h3{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:600;color:var(--charcoal);margin-bottom:0.6rem}
+.feat-card.dark h3{color:var(--white)}
+.feat-card p{font-size:0.9rem;color:var(--muted);line-height:1.7}
+.feat-card.dark p{color:rgba(255,255,255,0.55)}
+.feat-list{list-style:none;margin-top:1.25rem}
+.feat-list li{font-size:0.85rem;padding:0.38rem 0;border-bottom:1px solid var(--sand-d);color:var(--muted);display:flex;align-items:center;gap:0.5rem}
+.feat-card.dark .feat-list li{border-color:rgba(255,255,255,0.07);color:rgba(255,255,255,0.55)}
+.feat-list li:last-child{border-bottom:none}
+.feat-list li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--g400);flex-shrink:0}
+.feat-arr{margin-top:1.4rem;font-size:0.83rem;color:var(--g400);font-weight:500}
+
+/* other services strip */
+.other-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:2.25rem}
+.other-card{background:var(--white);border:1px solid var(--sand-d);border-radius:8px;padding:1.5rem;cursor:pointer;transition:all 0.2s}
+.other-card:hover{border-color:var(--g400);transform:translateY(-2px)}
+.other-card h4{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--charcoal);margin-bottom:0.35rem}
+.other-card p{font-size:0.83rem;color:var(--muted);line-height:1.55}
+
+/* why grid */
+.why-sec{background:var(--g900)}
+.why-sec .h-title{color:var(--white)}
+.why-sec .h-sub{color:rgba(255,255,255,0.52)}
+.why-sec .label{color:var(--g300)}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:2.75rem;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.07);border-radius:10px;overflow:hidden}
+.why-item{background:rgba(255,255,255,0.03);padding:1.85rem;transition:background 0.2s}
+.why-item:hover{background:rgba(255,255,255,0.06)}
+.why-num{font-family:'Playfair Display',serif;font-size:1.9rem;color:var(--g400);font-weight:700;line-height:1;margin-bottom:0.65rem}
+.why-item h4{font-weight:500;color:var(--white);margin-bottom:0.4rem}
+.why-item p{font-size:0.85rem;color:rgba(255,255,255,0.42);line-height:1.62}
+
+/* area */
+.area-sec{background:var(--sand)}
+.area-tags{display:flex;flex-wrap:wrap;gap:0.65rem;margin-top:1.85rem}
+.area-tag{background:var(--white);border:1px solid var(--sand-d);border-radius:3px;padding:0.4rem 0.9rem;font-size:0.85rem;color:var(--text)}
+
+/* cta banner */
+.cta-banner{background:var(--g600);padding:3.75rem 5%}
+.cta-banner-in{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.cta-banner h2{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.9rem);color:var(--white)}
+.cta-banner p{color:rgba(255,255,255,0.65);margin-top:0.4rem}
+
+/* ══════════ SERVICES PAGE ══════════ */
+.svc-detail{padding:4rem 5%;border-bottom:1px solid var(--sand-d)}
+.svc-detail:nth-child(even){background:var(--sand)}
+.svc-detail-in{max-width:1200px;margin:0 auto}
+.svc-detail-hdr{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-bottom:2.5rem}
+.svc-detail-hdr h2{font-family:'Playfair Display',serif;font-size:2rem;color:var(--charcoal);margin-bottom:0.65rem}
+.svc-detail-hdr.light h2{color:var(--white)}
+.svc-detail-hdr p{color:var(--muted);font-size:0.95rem;line-height:1.78}
+.svc-detail-hdr.light p{color:rgba(255,255,255,0.6)}
+
+/* service detail panels */
+.detail-panels{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.detail-panel{background:var(--white);border:1px solid var(--sand-d);border-radius:8px;padding:1.5rem}
+.svc-detail:nth-child(even) .detail-panel{background:var(--white)}
+.detail-panel h4{font-weight:500;color:var(--charcoal);margin-bottom:0.5rem;font-size:0.97rem}
+.detail-panel p{font-size:0.85rem;color:var(--muted);line-height:1.6}
+.detail-panel-dark{background:rgba(255,255,255,0.05)!important;border-color:rgba(255,255,255,0.09)!important}
+.detail-panel-dark h4{color:var(--white)!important}
+.detail-panel-dark p{color:rgba(255,255,255,0.5)!important}
+
+.tag-row{display:flex;flex-wrap:wrap;gap:0.45rem;margin-top:1rem}
+.stag{background:var(--g50);border:1px solid var(--g100);color:var(--g700);font-size:0.8rem;padding:0.28rem 0.7rem;border-radius:3px}
+.stag-light{background:rgba(64,145,108,0.15);border-color:rgba(64,145,108,0.25);color:var(--g300)}
+
+.svc-cta-strip{background:var(--g900);padding:4rem 5%;text-align:center}
+.svc-cta-strip h2{font-family:'Playfair Display',serif;font-size:1.9rem;color:var(--white);margin-bottom:0.65rem}
+.svc-cta-strip p{color:rgba(255,255,255,0.5);margin-bottom:1.85rem}
+
+/* ══════════ ABOUT ══════════ */
+.about-intro-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.about-text p{color:var(--muted);line-height:1.85;margin-bottom:1.2rem;font-size:0.97rem}
+.about-text p:first-of-type{font-size:1.08rem;color:var(--text)}
+.about-box{background:var(--g800);border-radius:12px;padding:2.25rem}
+.about-box h3{font-family:'Playfair Display',serif;font-size:1.45rem;margin-bottom:1.4rem;color:var(--white)}
+.chk-list{list-style:none}
+.chk-list li{display:flex;align-items:flex-start;gap:0.7rem;padding:0.6rem 0;border-bottom:1px solid rgba(255,255,255,0.07);font-size:0.88rem;color:rgba(255,255,255,0.72);line-height:1.5}
+.chk-list li:last-child{border-bottom:none}
+.chk-icon{width:19px;height:19px;background:var(--g500);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.62rem;color:var(--white);margin-top:1px}
+.stat-row{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--sand-d);border:1px solid var(--sand-d);border-radius:10px;overflow:hidden}
+.astat{background:var(--white);padding:1.85rem;text-align:center}
+.astat-n{font-family:'Playfair Display',serif;font-size:2.1rem;font-weight:700;color:var(--g600)}
+.astat-l{font-size:0.8rem;color:var(--muted);margin-top:0.3rem;text-transform:uppercase;letter-spacing:0.08em}
+.values-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.4rem;margin-top:2.75rem}
+.vcard{background:var(--white);border:1px solid var(--sand-d);border-radius:8px;padding:1.65rem}
+.vcard-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:var(--g100);line-height:1;margin-bottom:0.65rem}
+.vcard h3{font-size:0.97rem;font-weight:500;color:var(--charcoal);margin-bottom:0.4rem}
+.vcard p{font-size:0.85rem;color:var(--muted);line-height:1.62}
+
+/* ══════════ CONTACT ══════════ */
+.contact-layout{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1.6fr;gap:5rem;align-items:start;padding:5rem 5%}
+.contact-info h2{font-family:'Playfair Display',serif;font-size:1.75rem;color:var(--charcoal);margin-bottom:0.9rem}
+.contact-info>p{color:var(--muted);font-size:0.93rem;line-height:1.75;margin-bottom:1.85rem}
+.cblock{background:var(--sand);border-radius:8px;padding:1.35rem;margin-bottom:1.1rem}
+.cblock-l{font-size:0.68rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--g500);margin-bottom:0.35rem}
+.cblock-v{font-size:0.97rem;color:var(--charcoal);font-weight:500;text-decoration:none;display:block}
+.cblock-v:hover{color:var(--g600)}
+.cblock-s{font-size:0.8rem;color:var(--muted);margin-top:0.18rem}
+.sa-tags{display:flex;flex-wrap:wrap;gap:0.45rem;margin-top:0.9rem}
+.sa-tag{background:var(--white);border:1px solid var(--sand-d);border-radius:3px;padding:0.28rem 0.6rem;font-size:0.78rem;color:var(--muted)}
+.form-wrap{background:var(--white);border:1px solid var(--sand-d);border-radius:12px;padding:2.25rem}
+.form-hdr{margin-bottom:1.75rem}
+.form-hdr h2{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--charcoal);margin-bottom:0.35rem}
+.form-hdr p{font-size:0.87rem;color:var(--muted)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.fg{margin-bottom:1.1rem}
+.fg label{display:block;font-size:0.8rem;font-weight:500;color:var(--text);margin-bottom:0.35rem}
+.fg label span{color:var(--g500)}
+.fg input,.fg select,.fg textarea{width:100%;padding:0.68rem 0.85rem;border:1px solid var(--sand-d);border-radius:5px;font-family:'DM Sans',sans-serif;font-size:0.9rem;color:var(--text);background:var(--white);transition:border-color 0.2s,box-shadow 0.2s;outline:none;appearance:none}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--g400);box-shadow:0 0 0 3px rgba(64,145,108,0.1)}
+.fg textarea{resize:vertical;min-height:95px}
+.fg select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7' viewBox='0 0 11 7'%3E%3Cpath d='M1 1l4.5 4.5L10 1' stroke='%235a6e60' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 0.85rem center;padding-right:2.4rem;cursor:pointer}
+.form-submit{width:100%;padding:0.88rem;background:var(--g500);color:var(--white);border:none;border-radius:5px;font-family:'DM Sans',sans-serif;font-size:0.97rem;font-weight:500;cursor:pointer;transition:background 0.2s;margin-top:0.4rem}
+.form-submit:hover{background:var(--g400)}
+.form-note{text-align:center;font-size:0.76rem;color:var(--muted);margin-top:0.65rem}
+.form-success{display:none;text-align:center;padding:2rem 1rem}
+.fs-icon{width:52px;height:52px;background:var(--g50);border:2px solid var(--g300);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin:0 auto 1.1rem}
+.form-success h3{font-family:'Playfair Display',serif;font-size:1.35rem;color:var(--charcoal);margin-bottom:0.45rem}
+.form-success p{color:var(--muted);font-size:0.9rem}
+
+/* MOBILE */
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr;padding-top:calc(var(--nav) + 2rem)}
+  .hero-visual{display:none}
+  .why-grid{grid-template-columns:1fr 1fr}
+  .featured-grid{grid-template-columns:1fr}
+  .svc-detail-hdr{grid-template-columns:1fr;gap:1.5rem}
+  .about-intro-grid{grid-template-columns:1fr;gap:2.5rem}
+  .stat-row{grid-template-columns:1fr 1fr}
+  .contact-layout{grid-template-columns:1fr;gap:3rem;padding:3rem 5%}
+  .form-row{grid-template-columns:1fr}
+  .ft-inner{grid-template-columns:1fr;gap:1.75rem}
+  .ft-bot{flex-direction:column;gap:0.4rem;text-align:center}
+}
+@media(max-width:768px){
+  .nav-links{display:none;flex-direction:column;gap:0}
+  .nav-links.open{display:flex;position:fixed;top:var(--nav);left:0;right:0;background:var(--g900);padding:1rem 5% 2rem;border-top:1px solid rgba(255,255,255,0.07)}
+  .nav-links.open li{padding:0.55rem 0;border-bottom:1px solid rgba(255,255,255,0.06)}
+  .nav-links.open a{font-size:1rem}
+  .nav-cta-wrap{display:none}
+  .mob-toggle{display:block}
+  .why-grid{grid-template-columns:1fr}
+  .stat-row{grid-template-columns:1fr 1fr}
+}
+@media(max-width:480px){
+  .stat-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" onclick="showPage('home')">Ever<span>Leaf</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a onclick="showPage('home')" data-page="home" class="active">Home</a></li>
+      <li><a onclick="showPage('services')" data-page="services">Services</a></li>
+      <li><a onclick="showPage('about')" data-page="about">About</a></li>
+      <li><a onclick="showPage('contact')" data-page="contact">Contact</a></li>
+      <li class="nav-cta-wrap"><a onclick="showPage('contact')" class="nav-cta">Free Estimate</a></li>
+    </ul>
+    <button class="mob-toggle" id="menuBtn" aria-label="Toggle menu">&#9776;</button>
+  </div>
+</nav>
+
+<!-- ══════════════════════ HOME ══════════════════════ -->
+<div id="page-home" class="page active">
+
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-tag">Serving the Willamette Valley</div>
+        <h1>Irrigation &amp; Exterior Cleaning <em>Done Right</em></h1>
+        <p class="hero-sub">Sprinkler repair, irrigation installation, pressure washing, and soft washing for Oregon properties. We fix what's broken, clean what's dirty, and do it properly.</p>
+        <div class="hero-btns">
+          <button class="btn btn-primary" onclick="showPage('contact')">Get a Free Estimate</button>
+          <button class="btn btn-outline" onclick="showPage('services')">View Services</button>
+        </div>
+        <div class="hero-stats">
+          <div><div class="h-stat-n">Free</div><div class="h-stat-l">Estimates</div></div>
+          <div><div class="h-stat-n">100%</div><div class="h-stat-l">Local Oregon</div></div>
+          <div><div class="h-stat-n">4+</div><div class="h-stat-l">Service Areas</div></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hcard">
+          <p style="font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.38);margin-bottom:0.9rem">What We Do</p>
+          <ul class="hcard-svc-list">
+            <li><span class="hcard-dot"></span>Sprinkler Repair &amp; Diagnostics</li>
+            <li><span class="hcard-dot"></span>Irrigation System Installation</li>
+            <li><span class="hcard-dot"></span>Valve &amp; Leak Repair</li>
+            <li><span class="hcard-dot"></span>Driveway &amp; Patio Pressure Washing</li>
+            <li><span class="hcard-dot"></span>Soft Washing — Siding &amp; Roofs</li>
+            <li><span class="hcard-dot"></span>Full Property Exterior Refresh</li>
+          </ul>
+        </div>
+        <div class="hcard-float">
+          <div class="hcard-float-icon">🌿</div>
+          <div><strong>Based in Woodburn, OR</strong><span>Willamette Valley &amp; surrounding areas</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Services -->
+  <section style="background:var(--sand)">
+    <div class="inner">
+      <p class="label">Core Services</p>
+      <h2 class="h-title">Irrigation &amp; Exterior Cleaning Specialists</h2>
+      <p class="h-sub">Two things Oregon properties need every year — a system that waters correctly and surfaces that don't look like the inside of a moss farm.</p>
+      <div class="featured-grid">
+        <div class="feat-card" onclick="showPage('services')">
+          <div class="feat-icon">💧</div>
+          <h3>Irrigation Services</h3>
+          <p>We diagnose and repair existing systems, replace broken components, and install new irrigation from scratch. If your sprinklers aren't doing their job, we'll figure out why and fix it right.</p>
+          <ul class="feat-list">
+            <li>Sprinkler repair &amp; head replacement</li>
+            <li>Valve, timer &amp; controller work</li>
+            <li>Leak detection &amp; repair</li>
+            <li>Full system installation</li>
+            <li>Seasonal startup &amp; winterization</li>
+            <li>Drip irrigation</li>
+          </ul>
+          <div class="feat-arr">Learn more →</div>
+        </div>
+        <div class="feat-card" onclick="showPage('services')">
+          <div class="feat-icon">🚿</div>
+          <h3>Pressure &amp; Soft Washing</h3>
+          <p>Oregon's wet climate means moss, algae, and years of buildup on your driveway, siding, patio, and fences. We use the right pressure and chemistry for each surface — no damage, just clean.</p>
+          <ul class="feat-list">
+            <li>Driveway &amp; concrete cleaning</li>
+            <li>Patio &amp; deck washing</li>
+            <li>Siding &amp; exterior wall soft wash</li>
+            <li>Fence &amp; gate cleaning</li>
+            <li>RV &amp; mobile home washing</li>
+            <li>Full property refresh</li>
+          </ul>
+          <div class="feat-arr">Learn more →</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Other Services -->
+  <section>
+    <div class="inner">
+      <p class="label">Also Available</p>
+      <h2 class="h-title">Additional Property Services</h2>
+      <p class="h-sub">Beyond irrigation and exterior cleaning, we offer a full range of landscaping and hardscape services for Oregon properties.</p>
+      <div class="other-grid">
+        <div class="other-card" onclick="showPage('services')">
+          <h4>🌱 Landscaping</h4>
+          <p>Yard cleanups, bark dust, mulching, weed removal, shrub trimming, and seasonal maintenance.</p>
+        </div>
+        <div class="other-card" onclick="showPage('services')">
+          <h4>🪨 Hardscape</h4>
+          <p>Patios, pavers, walkways, gravel, retaining walls, and drainage solutions.</p>
+        </div>
+        <div class="other-card" onclick="showPage('services')">
+          <h4>🏡 Property Refresh</h4>
+          <p>Full exterior improvement projects combining multiple services for a complete overhaul.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why -->
+  <section class="why-sec">
+    <div class="inner">
+      <p class="label">Why EverLeaf</p>
+      <h2 class="h-title">How We Do It Differently</h2>
+      <p class="h-sub">We show up, we use the right technique, and we don't leave until the job is done correctly.</p>
+      <div class="why-grid">
+        <div class="why-item"><div class="why-num">01</div><h4>Honest Pricing</h4><p>Clear estimates before any work begins. No surprise charges, no upselling.</p></div>
+        <div class="why-item"><div class="why-num">02</div><h4>Right Technique</h4><p>Correct pressure and chemistry for every surface — we don't blast siding with the same PSI as concrete.</p></div>
+        <div class="why-item"><div class="why-num">03</div><h4>Irrigation Experience</h4><p>We've worked on all major system types. We diagnose before we replace anything.</p></div>
+        <div class="why-item"><div class="why-num">04</div><h4>Reliable Scheduling</h4><p>We confirm before we come and show up when we said we would.</p></div>
+        <div class="why-item"><div class="why-num">05</div><h4>Clear Communication</h4><p>You'll know what we found, what we did, and what to expect going forward.</p></div>
+        <div class="why-item"><div class="why-num">06</div><h4>Local Oregon Focus</h4><p>We know this climate. Moss, algae, and irrigation quirks specific to the Valley aren't new to us.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Area -->
+  <section class="area-sec">
+    <div class="inner">
+      <p class="label">Where We Work</p>
+      <h2 class="h-title">Service Area</h2>
+      <p class="h-sub">Based in Woodburn — serving the Willamette Valley and surrounding communities.</p>
+      <div class="area-tags">
+        <span class="area-tag">Woodburn</span><span class="area-tag">Salem</span>
+        <span class="area-tag">Silverton</span><span class="area-tag">Mt. Angel</span>
+        <span class="area-tag">Portland Metro</span><span class="area-tag">Marion County</span>
+        <span class="area-tag">Clackamas County</span><span class="area-tag">Surrounding Oregon Areas</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-banner">
+    <div class="cta-banner-in">
+      <div><h2>Sprinkler not working? Driveway looking rough?</h2><p>Get a free estimate — no commitment required.</p></div>
+      <button class="btn btn-outline" onclick="showPage('contact')">Request Estimate →</button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="ft-inner">
+      <div><p class="ft-brand">Ever<span>Leaf</span> Landscaping</p><p class="ft-desc">Irrigation repair, pressure washing, and exterior property services throughout the Willamette Valley.</p></div>
+      <div><p class="ft-h">Pages</p><ul class="ft-links"><li><a onclick="showPage('home')">Home</a></li><li><a onclick="showPage('services')">Services</a></li><li><a onclick="showPage('about')">About</a></li><li><a onclick="showPage('contact')">Contact</a></li></ul></div>
+      <div><p class="ft-h">Contact</p><ul class="ft-links"><li><a href="tel:+15034003444">(503) 400-3444</a></li><li><a href="mailto:teameverleaf@gmail.com">teameverleaf@gmail.com</a></li><li>Woodburn, OR</li></ul></div>
+    </div>
+    <div class="ft-bot"><span>&copy; 2025 EverLeaf Landscaping. All rights reserved.</span><span>Woodburn, Oregon</span></div>
+  </footer>
+</div>
+
+<!-- ══════════════════════ SERVICES ══════════════════════ -->
+<div id="page-services" class="page">
+
+  <div class="pg-hero">
+    <p class="label">What We Offer</p>
+    <h1>Services</h1>
+    <p>Irrigation repair and installation, pressure washing, soft washing, landscaping, and hardscape. Every estimate is free.</p>
+  </div>
+
+  <!-- IRRIGATION -->
+  <div class="svc-detail">
+    <div class="svc-detail-in">
+      <div class="svc-detail-hdr">
+        <div>
+          <p class="label">Irrigation</p>
+          <h2>Sprinkler &amp; Irrigation Services</h2>
+          <p>We work on all major residential irrigation systems — diagnosing problems before replacing parts, repairing what's broken, and installing new systems when needed. If it's underground and it waters things, we handle it.</p>
+          <div class="tag-row" style="margin-top:1.25rem">
+            <span class="stag">Sprinkler repair</span><span class="stag">Head replacement</span>
+            <span class="stag">Valve replacement</span><span class="stag">Timer programming</span>
+            <span class="stag">Leak detection</span><span class="stag">System diagnostics</span>
+            <span class="stag">Seasonal startup</span><span class="stag">Winterization</span>
+            <span class="stag">Drip irrigation</span><span class="stag">Full installation</span>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:0.93rem;color:var(--muted);line-height:1.78">A lot of irrigation problems look more complicated than they are — and some are worse than they look. We always start with a proper diagnostic so you know exactly what you're dealing with before any work begins.</p>
+          <p style="font-size:0.93rem;color:var(--muted);line-height:1.78;margin-top:1rem">All quotes are free and come with no obligation. We'll walk you through what we found and what it takes to fix it.</p>
+        </div>
+      </div>
+      <div class="detail-panels">
+        <div class="detail-panel"><h4>💧 Repair &amp; Diagnostics</h4><p>We identify what's actually wrong — broken heads, stuck valves, wiring issues, controller problems — and fix the root cause, not just the symptom.</p></div>
+        <div class="detail-panel"><h4>🔧 Valve &amp; Controller Work</h4><p>Valve replacement, timer reprogramming, controller upgrades, and zone troubleshooting for systems that aren't cycling right.</p></div>
+        <div class="detail-panel"><h4>🔍 Leak Detection</h4><p>Underground leaks, wet spots, and pressure drops diagnosed properly. Minor repairs to major line breaks — we handle all of it.</p></div>
+        <div class="detail-panel"><h4>🌱 Full Installation</h4><p>New irrigation systems installed for small yards up to large custom properties. Designed for coverage efficiency and long-term reliability.</p></div>
+        <div class="detail-panel"><h4>🗓 Seasonal Services</h4><p>Spring startup, system checks, and fall winterization to protect your investment and keep things running through Oregon's weather.</p></div>
+        <div class="detail-panel"><h4>💦 Drip Irrigation</h4><p>Targeted drip systems for garden beds, planter areas, and water-sensitive zones where traditional sprinklers don't make sense.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRESSURE WASHING -->
+  <div class="svc-detail" style="background:var(--g900)">
+    <div class="svc-detail-in">
+      <div class="svc-detail-hdr">
+        <div>
+          <p class="label" style="color:var(--g300)">Exterior Cleaning</p>
+          <h2 style="color:var(--white)">Pressure &amp; Soft Washing</h2>
+          <p style="color:rgba(255,255,255,0.6)">Oregon's wet climate is rough on exterior surfaces. Moss, algae, black streaks, and years of grime build up fast. We use the right combination of pressure and cleaning chemistry for each surface type — effective cleaning without damage.</p>
+          <div class="tag-row" style="margin-top:1.25rem">
+            <span class="stag-light">Driveway cleaning</span><span class="stag-light">Patio &amp; deck</span>
+            <span class="stag-light">Siding soft wash</span><span class="stag-light">Fence &amp; gate</span>
+            <span class="stag-light">Concrete surfaces</span><span class="stag-light">RV washing</span>
+            <span class="stag-light">Mobile home</span><span class="stag-light">Full property refresh</span>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:0.93rem;color:rgba(255,255,255,0.6);line-height:1.78">High pressure on the wrong surface causes real damage — stripped paint, cracked wood, forced water behind siding. We match pressure and detergent to the material, so concrete gets treated like concrete and cedar gets treated like cedar.</p>
+          <p style="font-size:0.93rem;color:rgba(255,255,255,0.6);line-height:1.78;margin-top:1rem">Most jobs can be estimated with a few photos. Send us what you're working with and we'll put together a quote.</p>
+        </div>
+      </div>
+      <div class="detail-panels">
+        <div class="detail-panel detail-panel-dark"><h4>🚗 Driveways &amp; Concrete</h4><p>High-pressure surface cleaning for concrete driveways, aprons, sidewalks, and parking pads. Removes oil stains, moss, algae, and embedded grime.</p></div>
+        <div class="detail-panel detail-panel-dark"><h4>🏡 Siding Soft Wash</h4><p>Low-pressure soft washing with appropriate detergents for vinyl, wood, and painted surfaces. Removes algae, mold, and oxidation without causing damage.</p></div>
+        <div class="detail-panel detail-panel-dark"><h4>🪵 Patios &amp; Decks</h4><p>Surface cleaning calibrated for wood, composite, pavers, and concrete patio surfaces. Restores appearance and removes organic growth.</p></div>
+        <div class="detail-panel detail-panel-dark"><h4>🚌 RV &amp; Mobile Homes</h4><p>Full exterior soft washing for RVs, mobile homes, and manufactured housing. Safe for painted surfaces and aluminum panels.</p></div>
+        <div class="detail-panel detail-panel-dark"><h4>🚪 Fences &amp; Gates</h4><p>Wood and vinyl fence cleaning to remove mold, algae, and weathering. Makes old fencing look considerably better before any staining or sealing.</p></div>
+        <div class="detail-panel detail-panel-dark"><h4>🏘 Full Property Refresh</h4><p>Complete exterior cleaning packages covering driveway, siding, patio, and more in a single visit. Good for prepping a home for sale or a full seasonal reset.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LANDSCAPING -->
+  <div class="svc-detail">
+    <div class="svc-detail-in">
+      <div class="svc-detail-hdr">
+        <div>
+          <p class="label">Landscaping</p>
+          <h2>Yard &amp; Ground Maintenance</h2>
+          <p>From a one-time spring cleanup to recurring maintenance, we handle the full range of residential landscaping work.</p>
+          <div class="tag-row" style="margin-top:1.25rem">
+            <span class="stag">Yard cleanups</span><span class="stag">Bark dust</span>
+            <span class="stag">Mulching</span><span class="stag">Weed removal</span>
+            <span class="stag">Shrub trimming</span><span class="stag">Planting</span>
+            <span class="stag">Lawn care</span><span class="stag">Seasonal maintenance</span>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:0.93rem;color:var(--muted);line-height:1.78">Whether it's a yard that got away from you over winter or a property that needs regular upkeep, we approach every job with the same attention to detail — clean edges, proper technique, full cleanup before we leave.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HARDSCAPE -->
+  <div class="svc-detail" style="background:var(--sand)">
+    <div class="svc-detail-in">
+      <div class="svc-detail-hdr">
+        <div>
+          <p class="label">Hardscape</p>
+          <h2>Patios, Pavers &amp; Structural Work</h2>
+          <p>Patios, walkways, retaining walls, gravel, and drainage installed with proper base prep and Oregon's weather in mind.</p>
+          <div class="tag-row" style="margin-top:1.25rem">
+            <span class="stag">Patio installation</span><span class="stag">Paver work</span>
+            <span class="stag">Walkways</span><span class="stag">Gravel installation</span>
+            <span class="stag">Retaining walls</span><span class="stag">Drainage solutions</span>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:0.93rem;color:var(--muted);line-height:1.78">Hardscape holds up when it's installed right. We don't cut corners on base preparation — which is usually what separates a patio that lasts from one that settles and cracks after two winters.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="svc-cta-strip">
+    <h2>Not sure what you need?</h2>
+    <p>Send us a description or a photo — we'll figure it out and put together a free estimate.</p>
+    <button class="btn btn-primary" onclick="showPage('contact')">Request a Free Estimate</button>
+  </div>
+
+  <footer>
+    <div class="ft-inner">
+      <div><p class="ft-brand">Ever<span>Leaf</span> Landscaping</p><p class="ft-desc">Irrigation repair, pressure washing, and exterior property services throughout the Willamette Valley.</p></div>
+      <div><p class="ft-h">Pages</p><ul class="ft-links"><li><a onclick="showPage('home')">Home</a></li><li><a onclick="showPage('services')">Services</a></li><li><a onclick="showPage('about')">About</a></li><li><a onclick="showPage('contact')">Contact</a></li></ul></div>
+      <div><p class="ft-h">Contact</p><ul class="ft-links"><li><a href="tel:+15034003444">(503) 400-3444</a></li><li><a href="mailto:teameverleaf@gmail.com">teameverleaf@gmail.com</a></li><li>Woodburn, OR</li></ul></div>
+    </div>
+    <div class="ft-bot"><span>&copy; 2025 EverLeaf Landscaping. All rights reserved.</span><span>Woodburn, Oregon</span></div>
+  </footer>
+</div>
+
+<!-- ══════════════════════ ABOUT ══════════════════════ -->
+<div id="page-about" class="page">
+
+  <div class="pg-hero">
+    <p class="label">Our Story</p>
+    <h1>Built Around Doing the Job Right</h1>
+    <p>EverLeaf was built around the idea that outdoor spaces should feel clean, functional, and professionally maintained.</p>
+  </div>
+
+  <section>
+    <div class="about-intro-grid">
+      <div class="about-text">
+        <p class="label">Who We Are</p>
+        <h2 class="h-title" style="margin-bottom:1.4rem">Oregon-Based. Detail-Focused.</h2>
+        <p>EverLeaf Landscaping provides irrigation, exterior cleaning, landscaping, and hardscape services throughout Oregon. We're based in Woodburn and serve communities across the Willamette Valley.</p>
+        <p>We specialize in the two things Oregon properties need most — irrigation that actually works and exterior surfaces that don't look like they've been left in the rain for three years. Because they have been.</p>
+        <p>Every estimate is free, every quote is honest, and every job gets the same attention to detail regardless of size.</p>
+        <button class="btn btn-outline-dark" style="margin-top:1rem" onclick="showPage('contact')">Work With Us</button>
+      </div>
+      <div class="about-box">
+        <h3>What Sets Us Apart</h3>
+        <ul class="chk-list">
+          <li><span class="chk-icon">✓</span>We diagnose irrigation systems before replacing anything</li>
+          <li><span class="chk-icon">✓</span>We match pressure and chemistry to each surface type</li>
+          <li><span class="chk-icon">✓</span>Every estimate is free and comes with no obligation</li>
+          <li><span class="chk-icon">✓</span>We tell you what's needed — and what isn't</li>
+          <li><span class="chk-icon">✓</span>We show up on time and communicate throughout</li>
+          <li><span class="chk-icon">✓</span>We clean up after ourselves before we leave</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="stat-row">
+      <div class="astat"><div class="astat-n">4+</div><div class="astat-l">Service Areas</div></div>
+      <div class="astat"><div class="astat-n">4</div><div class="astat-l">Core Services</div></div>
+      <div class="astat"><div class="astat-n">Free</div><div class="astat-l">All Estimates</div></div>
+      <div class="astat"><div class="astat-n">100%</div><div class="astat-l">Oregon-Local</div></div>
+    </div>
+  </section>
+
+  <section style="background:var(--sand)">
+    <div class="inner">
+      <p class="label">How We Work</p>
+      <h2 class="h-title">Our Approach</h2>
+      <p class="h-sub">Six principles that guide every project we take on.</p>
+      <div class="values-grid">
+        <div class="vcard"><div class="vcard-num">01</div><h3>Honest Pricing</h3><p>Clear, itemized estimates before we start. No upselling work that isn't needed.</p></div>
+        <div class="vcard"><div class="vcard-num">02</div><h3>Diagnose First</h3><p>For irrigation especially — we find the actual problem before recommending any fix.</p></div>
+        <div class="vcard"><div class="vcard-num">03</div><h3>Right Technique</h3><p>Correct pressure and detergent for each surface. We don't treat everything the same.</p></div>
+        <div class="vcard"><div class="vcard-num">04</div><h3>Reliable Scheduling</h3><p>We confirm before we come and show up when we said we would.</p></div>
+        <div class="vcard"><div class="vcard-num">05</div><h3>Clear Communication</h3><p>You'll hear from us before, during, and after — especially if anything changes.</p></div>
+        <div class="vcard"><div class="vcard-num">06</div><h3>Local Knowledge</h3><p>We understand Oregon's soil, climate, and the specific problems that come with it.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--g900);text-align:center">
+    <div style="max-width:540px;margin:0 auto">
+      <p class="label" style="color:var(--g300)">Get In Touch</p>
+      <h2 class="h-title" style="color:var(--white);margin-bottom:0.65rem">Ready to get started?</h2>
+      <p style="color:rgba(255,255,255,0.52);margin-bottom:1.85rem">Free estimate, no commitment. Tell us what you've got and we'll take a look.</p>
+      <button class="btn btn-primary" onclick="showPage('contact')">Request a Free Estimate</button>
+    </div>
+  </section>
+
+  <footer>
+    <div class="ft-inner">
+      <div><p class="ft-brand">Ever<span>Leaf</span> Landscaping</p><p class="ft-desc">Irrigation repair, pressure washing, and exterior property services throughout the Willamette Valley.</p></div>
+      <div><p class="ft-h">Pages</p><ul class="ft-links"><li><a onclick="showPage('home')">Home</a></li><li><a onclick="showPage('services')">Services</a></li><li><a onclick="showPage('about')">About</a></li><li><a onclick="showPage('contact')">Contact</a></li></ul></div>
+      <div><p class="ft-h">Contact</p><ul class="ft-links"><li><a href="tel:+15034003444">(503) 400-3444</a></li><li><a href="mailto:teameverleaf@gmail.com">teameverleaf@gmail.com</a></li><li>Woodburn, OR</li></ul></div>
+    </div>
+    <div class="ft-bot"><span>&copy; 2025 EverLeaf Landscaping. All rights reserved.</span><span>Woodburn, Oregon</span></div>
+  </footer>
+</div>
+
+<!-- ══════════════════════ CONTACT ══════════════════════ -->
+<div id="page-contact" class="page">
+
+  <div class="pg-hero">
+    <p class="label">Get In Touch</p>
+    <h1>Request a Free Estimate</h1>
+    <p>Tell us what you're working with — we'll get back to you with a clear, no-obligation quote.</p>
+  </div>
+
+  <div class="contact-layout">
+    <div class="contact-info">
+      <p class="label">Contact Info</p>
+      <h2>Let's talk about your property.</h2>
+      <p>Fill out the form or reach out directly. We typically respond within one business day.</p>
+      <div class="cblock"><p class="cblock-l">Phone</p><a href="tel:+15034003444" class="cblock-v">(503) 400-3444</a><p class="cblock-s">Text, call, or email — we respond to all three</p><p class="cblock-s" style="margin-top:0.4rem">Let us know what you need and we'll get back to you</p></div>
+      <div class="cblock"><p class="cblock-l">Phone / Text</p><a href="tel:+15034003444" class="cblock-v">(503) 400-3444</a><p class="cblock-s">Text us what you need and we'll get back to you</p></div>
+      <div class="cblock"><p class="cblock-l">Email</p><a href="mailto:teameverleaf@gmail.com" class="cblock-v">teameverleaf@gmail.com</a><p class="cblock-s">Email or leave a voicemail — whatever's easiest</p></div>
+      <div class="cblock"><p class="cblock-l">Based In</p><span class="cblock-v">Woodburn, Oregon</span><p class="cblock-s">Serving the Willamette Valley</p></div>
+      <p class="label" style="margin-top:1.85rem">Service Area</p>
+      <div class="sa-tags">
+        <span class="sa-tag">Woodburn</span><span class="sa-tag">Salem</span><span class="sa-tag">Silverton</span>
+        <span class="sa-tag">Mt. Angel</span><span class="sa-tag">Portland Metro</span>
+        <span class="sa-tag">Marion County</span><span class="sa-tag">Clackamas County</span>
+      </div>
+    </div>
+
+    <div class="form-wrap">
+      <div class="form-hdr">
+        <h2>Estimate Request</h2>
+        <p>Fields marked <span style="color:var(--g500)">*</span> are required. We'll follow up within 1 business day.</p>
+      </div>
+      <form id="estimateForm" action="https://formspree.io/f/REPLACE_WITH_YOUR_ID" method="POST">
+        <div class="form-row">
+          <div class="fg"><label>Name <span>*</span></label><input type="text" name="name" placeholder="Your full name" required/></div>
+          <div class="fg"><label>Phone <span>*</span></label><input type="tel" name="phone" placeholder="(503) 000-0000" required/></div>
+        </div>
+        <div class="fg"><label>Email</label><input type="email" name="email" placeholder="your@email.com"/></div>
+        <div class="fg"><label>Property Address <span>*</span></label><input type="text" name="address" placeholder="Street address, city" required/></div>
+        <div class="fg">
+          <label>Service Needed <span>*</span></label>
+          <select name="service" required>
+            <option value="" disabled selected>Select a service...</option>
+            <option>Irrigation Repair / Diagnostics</option>
+            <option>Irrigation Installation</option>
+            <option>Sprinkler Head Replacement</option>
+            <option>Valve or Leak Repair</option>
+            <option>Seasonal Startup / Winterization</option>
+            <option>Pressure Washing</option>
+            <option>Soft Washing — Siding</option>
+            <option>Full Property Exterior Wash</option>
+            <option>Landscaping / Yard Cleanup</option>
+            <option>Hardscape / Patio</option>
+            <option>Not sure — need advice</option>
+            <option>Multiple services</option>
+          </select>
+        </div>
+        <div class="fg"><label>Project Description <span>*</span></label><textarea name="description" placeholder="Describe the issue or job — what's happening, how bad it is, anything that helps us understand the scope. Photos help too." required></textarea></div>
+        <div class="fg">
+          <label>Preferred Contact Method</label>
+          <select name="contact_method">
+            <option value="" disabled selected>How should we reach you?</option>
+            <option>Phone call</option><option>Text message</option>
+            <option>Email</option><option>Any</option>
+          </select>
+        </div>
+        <button type="submit" class="form-submit">Submit Estimate Request →</button>
+        <p class="form-note">No commitment required. We'll follow up within 1 business day.</p>
+      </form>
+      <div class="form-success" id="formSuccess">
+        <div class="fs-icon">✓</div>
+        <h3>Request received!</h3>
+        <p>Thanks for reaching out. We'll review your info and get back to you within 1 business day.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="ft-inner">
+      <div><p class="ft-brand">Ever<span>Leaf</span> Landscaping</p><p class="ft-desc">Irrigation repair, pressure washing, and exterior property services throughout the Willamette Valley.</p></div>
+      <div><p class="ft-h">Pages</p><ul class="ft-links"><li><a onclick="showPage('home')">Home</a></li><li><a onclick="showPage('services')">Services</a></li><li><a onclick="showPage('about')">About</a></li><li><a onclick="showPage('contact')">Contact</a></li></ul></div>
+      <div><p class="ft-h">Contact</p><ul class="ft-links"><li><a href="tel:+15034003444">(503) 400-3444</a></li><li><a href="mailto:teameverleaf@gmail.com">teameverleaf@gmail.com</a></li><li>Woodburn, OR</li></ul></div>
+    </div>
+    <div class="ft-bot"><span>&copy; 2025 EverLeaf Landscaping. All rights reserved.</span><span>Woodburn, Oregon</span></div>
+  </footer>
+</div>
+
+<script>
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  document.querySelectorAll('.nav-links a[data-page]').forEach(a=>{
+    a.classList.toggle('active',a.dataset.page===id);
+  });
+  window.scrollTo({top:0,behavior:'instant'});
+  document.getElementById('navLinks').classList.remove('open');
+}
+document.getElementById('menuBtn').addEventListener('click',()=>{
+  document.getElementById('navLinks').classList.toggle('open');
+});
+const form=document.getElementById('estimateForm');
+form.addEventListener('submit',async(e)=>{
+  e.preventDefault();
+  try{
+    const res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
+    if(res.ok){form.style.display='none';document.getElementById('formSuccess').style.display='block';}
+    else{alert('Something went wrong. Please call or email us directly.');}
+  }catch{alert('Something went wrong. Please call or email us directly.');}
+});
+</script>
+</body>
+</html>
